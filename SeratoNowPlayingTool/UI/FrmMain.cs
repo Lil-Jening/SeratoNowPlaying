@@ -68,6 +68,42 @@ namespace NickScotney.SeratoNowPlaying.UI
             else
                 settingsList.Add(new Setting { SettingName = "CurrentTrackLabelFile", SettingValue = "" });
 
+            //  Enable Current Track Prefix 
+
+            setting = settingsList.First(set => set.SettingName == "EnableCurrentTrackPrefix");
+
+            if (setting != null)
+                CT_Prefix_CheckBox.Checked = Boolean.Parse(setting.SettingValue);
+            else
+                settingsList.Add(new Setting { SettingName = "EnableCurrentTrackPrefix", SettingValue = "" });
+
+            //  Current Track Prefix
+
+            setting = settingsList.First(set => set.SettingName == "CurrentTrackPrefixText");
+
+            if (setting != null)
+                CT_Prefix_TextBox.Text = setting.SettingValue;
+            else
+                settingsList.Add(new Setting { SettingName = "CurrentTrackPrefixText", SettingValue = "" });
+
+            //  Enable Current Track Suffix
+
+            setting = settingsList.First(set => set.SettingName == "EnableCurrentTrackSuffix");
+
+            if (setting != null)
+                CT_Suffix_CheckBox.Checked = Boolean.Parse(setting.SettingValue);
+            else
+                settingsList.Add(new Setting { SettingName = "EnableCurrentTrackSuffix", SettingValue = "" });
+
+            //  Current Track Suffix
+
+            setting = settingsList.First(set => set.SettingName == "CurrentTrackSuffixText");
+
+            if (setting != null)
+                CT_Suffix_TextBox.Text = setting.SettingValue;
+            else
+                settingsList.Add(new Setting { SettingName = "CurrentTrackSuffixText", SettingValue = "" });
+
             //  Enable Previous Track
             setting = settingsList.First(set => set.SettingName == "EnablePreviousTrackLabel");
 
@@ -125,6 +161,20 @@ namespace NickScotney.SeratoNowPlaying.UI
             //  Current Track
             setting = settingsList.First(set => set.SettingName == "CurrentTrackLabelFile");
             setting.SettingValue = TxtBxCurrentTrack.Text;
+
+            //  Current Track Prefix / Suffix
+
+            setting = settingsList.First(set => set.SettingName == "EnableCurrentTrackPrefix");
+            setting.SettingValue = CT_Prefix_CheckBox.Checked.ToString();
+
+            setting = settingsList.First(set => set.SettingName == "CurrentTrackPrefixText");
+            setting.SettingValue = CT_Prefix_TextBox.Text;
+
+            setting = settingsList.First(set => set.SettingName == "EnableCurrentTrackSuffix");
+            setting.SettingValue = CT_Suffix_CheckBox.Checked.ToString();
+
+            setting = settingsList.First(set => set.SettingName == "CurrentTrackSuffixText");
+            setting.SettingValue = CT_Suffix_TextBox.Text;
 
             //  Previous Track Enabled
             setting = settingsList.First(set => set.SettingName == "EnablePreviousTrackLabel");
@@ -202,9 +252,26 @@ namespace NickScotney.SeratoNowPlaying.UI
         {
             while (true)
             {
-                FileController.ReadHtml(TxtBxCurrentTrack.Text, ChkBxPreviousTrack.Checked ? TxtBxPreviousTrack.Text : String.Empty);
+                FileController.ReadHtml(TxtBxCurrentTrack.Text, ChkBxPreviousTrack.Checked ? TxtBxPreviousTrack.Text : String.Empty,
+                    CT_Prefix_CheckBox.Checked ? CT_Prefix_TextBox.Text : String.Empty, CT_Suffix_CheckBox.Checked ? CT_Suffix_TextBox.Text : String.Empty) ;
                 Thread.Sleep(int.Parse(TxtBxParseTime.Text));
             }
+        }
+
+        private void CT_Prefix_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CT_Prefix_TextBox.Enabled = CT_Prefix_CheckBox.Checked;
+
+            if (!CT_Prefix_CheckBox.Checked)
+                CT_Prefix_TextBox.Text = String.Empty;
+        }
+
+        private void CT_Suffix_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CT_Suffix_TextBox.Enabled = CT_Suffix_CheckBox.Checked;
+
+            if (!CT_Suffix_CheckBox.Checked)
+                CT_Prefix_TextBox.Text = String.Empty;
         }
     }
 }

@@ -47,10 +47,17 @@
             this.BtnClose = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnStart = new System.Windows.Forms.Button();
+            this.GrpBxCTPreSuf = new System.Windows.Forms.GroupBox();
+            this.CT_Suffix_CheckBox = new System.Windows.Forms.CheckBox();
+            this.CT_Suffix_TextBox = new System.Windows.Forms.TextBox();
+            this.CT_Prefix_TextBox = new System.Windows.Forms.TextBox();
+            this.CT_Prefix_CheckBox = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.GrpBxParseTime.SuspendLayout();
             this.GrpBxLocation.SuspendLayout();
             this.GrpBxCurrentTrack.SuspendLayout();
             this.GrpBxPreviousTrack.SuspendLayout();
+            this.GrpBxCTPreSuf.SuspendLayout();
             this.SuspendLayout();
             // 
             // GrpBxParseTime
@@ -162,7 +169,7 @@
             this.GrpBxPreviousTrack.Controls.Add(this.TxtBxPreviousTrack);
             this.GrpBxPreviousTrack.Controls.Add(this.label4);
             this.GrpBxPreviousTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GrpBxPreviousTrack.Location = new System.Drawing.Point(13, 286);
+            this.GrpBxPreviousTrack.Location = new System.Drawing.Point(13, 430);
             this.GrpBxPreviousTrack.Name = "GrpBxPreviousTrack";
             this.GrpBxPreviousTrack.Size = new System.Drawing.Size(299, 104);
             this.GrpBxPreviousTrack.TabIndex = 3;
@@ -210,7 +217,7 @@
             // 
             // BtnClose
             // 
-            this.BtnClose.Location = new System.Drawing.Point(256, 396);
+            this.BtnClose.Location = new System.Drawing.Point(260, 540);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(56, 23);
             this.BtnClose.TabIndex = 4;
@@ -220,7 +227,7 @@
             // 
             // BtnSave
             // 
-            this.BtnSave.Location = new System.Drawing.Point(194, 396);
+            this.BtnSave.Location = new System.Drawing.Point(198, 540);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(56, 23);
             this.BtnSave.TabIndex = 4;
@@ -230,7 +237,7 @@
             // 
             // BtnStart
             // 
-            this.BtnStart.Location = new System.Drawing.Point(132, 396);
+            this.BtnStart.Location = new System.Drawing.Point(136, 540);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(56, 23);
             this.BtnStart.TabIndex = 4;
@@ -238,11 +245,77 @@
             this.BtnStart.UseVisualStyleBackColor = true;
             this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
+            // GrpBxCTPreSuf
+            // 
+            this.GrpBxCTPreSuf.Controls.Add(this.CT_Suffix_CheckBox);
+            this.GrpBxCTPreSuf.Controls.Add(this.CT_Suffix_TextBox);
+            this.GrpBxCTPreSuf.Controls.Add(this.CT_Prefix_TextBox);
+            this.GrpBxCTPreSuf.Controls.Add(this.CT_Prefix_CheckBox);
+            this.GrpBxCTPreSuf.Controls.Add(this.label5);
+            this.GrpBxCTPreSuf.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GrpBxCTPreSuf.Location = new System.Drawing.Point(13, 286);
+            this.GrpBxCTPreSuf.Name = "GrpBxCTPreSuf";
+            this.GrpBxCTPreSuf.Size = new System.Drawing.Size(299, 138);
+            this.GrpBxCTPreSuf.TabIndex = 7;
+            this.GrpBxCTPreSuf.TabStop = false;
+            this.GrpBxCTPreSuf.Text = "Current Track Prefix / Suffix";
+            // 
+            // CT_Suffix_CheckBox
+            // 
+            this.CT_Suffix_CheckBox.AutoSize = true;
+            this.CT_Suffix_CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CT_Suffix_CheckBox.Location = new System.Drawing.Point(14, 89);
+            this.CT_Suffix_CheckBox.Name = "CT_Suffix_CheckBox";
+            this.CT_Suffix_CheckBox.Size = new System.Drawing.Size(88, 17);
+            this.CT_Suffix_CheckBox.TabIndex = 6;
+            this.CT_Suffix_CheckBox.Text = "Enable Suffix";
+            this.CT_Suffix_CheckBox.UseVisualStyleBackColor = true;
+            this.CT_Suffix_CheckBox.CheckedChanged += new System.EventHandler(this.CT_Suffix_CheckBox_CheckedChanged);
+            // 
+            // CT_Suffix_TextBox
+            // 
+            this.CT_Suffix_TextBox.Enabled = false;
+            this.CT_Suffix_TextBox.Location = new System.Drawing.Point(14, 112);
+            this.CT_Suffix_TextBox.Name = "CT_Suffix_TextBox";
+            this.CT_Suffix_TextBox.Size = new System.Drawing.Size(279, 20);
+            this.CT_Suffix_TextBox.TabIndex = 5;
+            // 
+            // CT_Prefix_TextBox
+            // 
+            this.CT_Prefix_TextBox.Enabled = false;
+            this.CT_Prefix_TextBox.Location = new System.Drawing.Point(14, 63);
+            this.CT_Prefix_TextBox.Name = "CT_Prefix_TextBox";
+            this.CT_Prefix_TextBox.Size = new System.Drawing.Size(279, 20);
+            this.CT_Prefix_TextBox.TabIndex = 3;
+            // 
+            // CT_Prefix_CheckBox
+            // 
+            this.CT_Prefix_CheckBox.AutoSize = true;
+            this.CT_Prefix_CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CT_Prefix_CheckBox.Location = new System.Drawing.Point(14, 40);
+            this.CT_Prefix_CheckBox.Name = "CT_Prefix_CheckBox";
+            this.CT_Prefix_CheckBox.Size = new System.Drawing.Size(88, 17);
+            this.CT_Prefix_CheckBox.TabIndex = 4;
+            this.CT_Prefix_CheckBox.Text = "Enable Prefix";
+            this.CT_Prefix_CheckBox.UseVisualStyleBackColor = true;
+            this.CT_Prefix_CheckBox.CheckedChanged += new System.EventHandler(this.CT_Prefix_CheckBox_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(283, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "If enabled, will add a prefix or suffix to the current track title";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 434);
+            this.ClientSize = new System.Drawing.Size(328, 572);
+            this.Controls.Add(this.GrpBxCTPreSuf);
             this.Controls.Add(this.BtnStart);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.BtnClose);
@@ -252,9 +325,9 @@
             this.Controls.Add(this.GrpBxParseTime);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(344, 473);
+            this.MaximumSize = new System.Drawing.Size(344, 611);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(344, 473);
+            this.MinimumSize = new System.Drawing.Size(344, 611);
             this.Name = "FrmMain";
             this.Text = "Serato Now Playing Tool";
             this.Load += new System.EventHandler(this.FrmMain_Load);
@@ -266,6 +339,8 @@
             this.GrpBxCurrentTrack.PerformLayout();
             this.GrpBxPreviousTrack.ResumeLayout(false);
             this.GrpBxPreviousTrack.PerformLayout();
+            this.GrpBxCTPreSuf.ResumeLayout(false);
+            this.GrpBxCTPreSuf.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -290,6 +365,12 @@
         private System.Windows.Forms.Button BtnStart;
         private System.Windows.Forms.Button BtnBrowseCurrent;
         private System.Windows.Forms.Button BtnBrowsePrevious;
+        private System.Windows.Forms.GroupBox GrpBxCTPreSuf;
+        private System.Windows.Forms.CheckBox CT_Suffix_CheckBox;
+        private System.Windows.Forms.TextBox CT_Suffix_TextBox;
+        private System.Windows.Forms.TextBox CT_Prefix_TextBox;
+        private System.Windows.Forms.CheckBox CT_Prefix_CheckBox;
+        private System.Windows.Forms.Label label5;
     }
 }
 

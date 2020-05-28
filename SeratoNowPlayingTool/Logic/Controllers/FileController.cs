@@ -13,8 +13,8 @@ namespace NickScotney.SeratoNowPlaying.Logic.Controllers
                 FileHelper.ClearFile(previousTrack);
         }
 
-        public static void ReadHtml(string currentTrackLabel, string previousTrackLabel)
-            => FileHelper.GetTrackNames(currentTrackLabel, previousTrackLabel);
+        public static void ReadHtml(string currentTrackLabel, string previousTrackLabel, string currentTrackPrefix, string currentTrackSuffix)
+            => FileHelper.GetTrackNames(currentTrackLabel, previousTrackLabel, currentTrackPrefix, currentTrackSuffix);
 
         public static void SetFolderPath(string folderPath)
             => FileHelper.FolderLocation = folderPath;

@@ -58,7 +58,7 @@ namespace NickScotney.SeratoNowPlaying.Logic.Helpers
             return settingsList;
         }
 
-        public static void GetTrackNames(string currentTrackLabel, string previousTrackLabel)
+        public static void GetTrackNames(string currentTrackLabel, string previousTrackLabel, string currentTrackPrefix, string currentTrackSuffix)
         {
             var currentTrack = String.Empty;
             var previousTrack = String.Empty;
@@ -70,11 +70,11 @@ namespace NickScotney.SeratoNowPlaying.Logic.Helpers
                     .Where(div => div.GetAttributeValue("id", "") == "playlist_tracklist").ToList();
 
                 //  Get the current track here
-                WriteLabelFiles(currentTrackLabel, GetTrackName(0, nodes));
+                WriteLabelFiles(currentTrackLabel, GetTrackName(0, nodes, currentTrackPrefix, currentTrackSuffix));
 
                 //  Get the previous track if we need it
                 if (!String.IsNullOrEmpty(previousTrackLabel))
-                    WriteLabelFiles(previousTrackLabel, GetTrackName(1, nodes));
+                    WriteLabelFiles(previousTrackLabel, GetTrackName(1, nodes, String.Empty, String.Empty));
             }
             catch { }
         }
@@ -115,7 +115,7 @@ namespace NickScotney.SeratoNowPlaying.Logic.Helpers
         }
 
 
-        static string GetTrackName(int trackIndex, List<HtmlNode> nodes)
+        static string GetTrackName(int trackIndex, List<HtmlNode> nodes, string currentTrackPrefix, string currentTrackSuffix)
         {
             var trackName = String.Empty;
 
@@ -137,6 +137,11 @@ namespace NickScotney.SeratoNowPlaying.Logic.Helpers
                     trackName = trackTitleNode.InnerText.Trim();
             }
             catch { trackName = String.Empty; }
+
+            if (!String.IsNullOrEmpty(currentTrackPrefix))
+                trackName = currentTrackPrefix + trackName;
+            if (!String.IsNullOrEmpty(currentTrackSuffix))
+                trackName = trackName + currentTrackSuffix;
 
             return trackName;
         }
